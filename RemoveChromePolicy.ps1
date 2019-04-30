@@ -1,9 +1,11 @@
+param([Int32]$EventID)
+
 $PolicyPath = 'HKLM:\Software\Policies\Google\Chrome'
-$ResultFile = 'C:\bin\RemovePolicyResult.csv'
+$ResultFile = 'C:\bin\RemovePolicyResultCopy.csv'
 
 # Setup
 If (!(Test-Path $ResultFile)) {
-    Write-Output "date;runMessage;didExist;wasRemoved" | Out-File $ResultFile -Encoding utf8 -Force
+    Write-Output "date;runMessage;didExist;wasRemoved;EventID" | Out-File $ResultFile -Encoding utf8 -Force
 }
 
 $date = Get-Date
@@ -32,4 +34,4 @@ If (Test-Path $PolicyPath) {
 }
 
 # Log
-Write-Output "$date;$runMessage;$didExist;$wasRemoved" | Out-File $ResultFile -Encoding utf8 -Force -Append
+Write-Output "$date;$runMessage;$didExist;$wasRemoved;$EventID" | Out-File $ResultFile -Encoding utf8 -Force -Append
