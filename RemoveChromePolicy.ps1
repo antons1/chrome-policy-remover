@@ -1,7 +1,7 @@
 param([Int32]$EventID)
 
 $PolicyPath = 'HKLM:\Software\Policies\Google\Chrome'
-$ResultFile = 'C:\bin\RemovePolicyResultCopy.csv'
+$ResultFile = 'C:\bin\RemovePolicyResult.csv'
 
 # Setup
 If (!(Test-Path $ResultFile)) {
